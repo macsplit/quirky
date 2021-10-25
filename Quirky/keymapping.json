@@ -1,0 +1,160 @@
+{
+  "mappings": [
+    {
+      "key": "A",
+      "glyph": "\u15e9"
+    },
+    {
+      "key": "B",
+      "glyph": "\u13f4"
+    },
+    {
+      "key": "C",
+      "glyph": "\u13df"
+    },
+    {
+      "key": "D",
+      "glyph": "\u13a0"
+    },
+    {
+      "key": "E",
+      "glyph": "\u03a3"
+    },
+    {
+      "key": "F",
+      "glyph": "F"
+    },
+    {
+      "key": "G",
+      "glyph": "\u13e9"
+    },
+    {
+      "key": "H",
+      "glyph": "\u13bb"
+    },
+    {
+      "key": "I",
+      "glyph": "I"
+    },
+    {
+      "key": "J",
+      "glyph": "J"
+    },
+    {
+      "key": "K",
+      "glyph": "\u0198"
+    },
+    {
+      "key": "L",
+      "glyph": "L"
+    },
+    {
+      "key": "M",
+      "glyph": "\u15f0"
+    },
+    {
+      "key": "N",
+      "glyph": "\u039d"
+    },
+    {
+      "key": "O",
+      "glyph": "\u13be"
+    },
+    {
+      "key": "P",
+      "glyph": "\u146d"
+    },
+    {
+      "key": "Q",
+      "glyph": "Q"
+    },
+    {
+      "key": "R",
+      "glyph": "\u042f"
+    },
+    {
+      "key": "S",
+      "glyph": "\u1515"
+    },
+    {
+      "key": "T",
+      "glyph": "\u03a4"
+    },
+    {
+      "key": "U",
+      "glyph": "\u0244"
+    },
+    {
+      "key": "V",
+      "glyph": "\u25bd"
+    },
+    {
+      "key": "W",
+      "glyph": "\u13d4"
+    },
+    {
+      "key": "X",
+      "glyph": "\u166d"
+    },
+    {
+      "key": "Y",
+      "glyph": "\u03a8"
+    },
+    {
+      "key": "Z",
+      "glyph": "\u0396"
+    },
+    {
+      "key": "0",
+      "glyph": "\u0555"
+    },
+    {
+      "key": "1",
+      "glyph": "1"
+    },
+    {
+      "key": "2",
+      "glyph": "2"
+    },
+    {
+      "key": "3",
+      "glyph": "3"
+    },
+    {
+      "key": "4",
+      "glyph": "4"
+    },
+    {
+      "key": "5",
+      "glyph": "5"
+    },
+    {
+      "key": "6",
+      "glyph": "6"
+    },
+    {
+      "key": "7",
+      "glyph": "7"
+    },
+    {
+      "key": "8",
+      "glyph": "8"
+    },
+    {
+      "key": "9",
+      "glyph": "9"
+    },
+    {
+      "key": "-",
+      "glyph": "-"
+    },
+    {
+      "key": ",",
+      "glyph": ","
+    },
+    {
+      "key": ".",
+      "glyph": "."
+    }
+  ]
+}

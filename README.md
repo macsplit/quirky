@@ -6,19 +6,19 @@ Quirky is an uppercase English keyboard extension for the iPhone with an accompa
 
 1. When the app is first run, in settings the keyboard can be enabled
 
-![First Run](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2056%2059.png)
+![First Run](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2056%2059.png =360x640)
 
 2. The app has a list of keys and which character is produced
 
-![Map](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2057%2027.png)
+![Map](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2057%2027.png =360x640)
 
 3. Tapping one, a new character can be chosen from a grid of all possible characters
 
-![Grid](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2057%2047.png)
+![Grid](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2057%2047.png =360x640)
 
 4. The keyboard can then be used
 
-![Use](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2058%2040.png)
+![Use](https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2058%2040.png =360x640)
 
 Tapping the globe key changes back to another keyboard layout
 

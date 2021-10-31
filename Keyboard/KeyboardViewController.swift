@@ -66,8 +66,7 @@ class KeyboardViewController: UIInputViewController {
                 result[k["key"] as! String] = k["glyph"] as? String
             }
         } catch {
-            print("\(error)")
-            return result
+            return self.mapping
         }
         return result
     }
@@ -85,7 +84,7 @@ class KeyboardViewController: UIInputViewController {
         {
             self.textDocumentProxy.insertText(" ")
         }
-        else if (pressed == "⌨")
+        else if (pressed == "🌐")
         {
             self.advanceToNextInputMode()
         }

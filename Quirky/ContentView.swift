@@ -9,6 +9,8 @@ import SwiftUI
 
 private let columns = 6
 
+private let mainKeys = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
+
 func load () -> [String:String] {
     var result = [String:String]()
     do {
@@ -30,6 +32,11 @@ struct KeyMap: Identifiable  {
     var id: Int
     var key: String
     var glyph: String
+}
+
+struct KeyMapName: Identifiable  {
+    var id: Int
+    var preview: String
 }
 
 func loadMap () -> [KeyMap] {
@@ -112,10 +119,100 @@ class KeyListModel: ObservableObject {
         let index = self.keylist.firstIndex(where: {$0.key == key})
         self.keylist[index!].glyph = glyph
         self.objectWillChange.send()
-        self.save()
+        self.saveAndApplyCurrent()
+    }
+    
+    func preview() -> String {
+        var result = ""
+        for key in mainKeys {
+            let index = self.keylist.firstIndex(where: {$0.key == key})
+            result = result + self.keylist[index!].glyph
+        }
+        return result
     }
     
     func save () {
+        let data = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.hanken.quirky")!.appendingPathComponent("savedmappings.json")
+        var jsonResult = [String:[[String:[String:String]]]]()
+        if FileManager.default.fileExists(atPath: data.path) {
+            do {
+                let jsonData = try NSData(contentsOfFile: data.path, options: .mappedIfSafe)
+                jsonResult = (try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary)! as! [String : [[String : [String : String]]]]
+            } catch {
+                print("read error")
+                return
+            }
+        }
+        var listDict = [[String:[String:String]]]()
+        for key in self.keylist {
+            listDict.append([String(key.id):[key.key:key.glyph]])
+        }
+        jsonResult[self.preview()] = listDict
+
+        do {
+            let newJsonData = try JSONSerialization.data(withJSONObject: jsonResult, options: .prettyPrinted)
+            try newJsonData.write(to: data)
+        } catch {
+            print ("write error")
+            return
+        }
+    }
+    
+    func load(index: String) {
+        let data = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.hanken.quirky")!.appendingPathComponent("savedmappings.json")
+        var jsonResult = [String:[[String:[String:String]]]]()
+        if FileManager.default.fileExists(atPath: data.path) {
+            do {
+                let jsonData = try NSData(contentsOfFile: data.path, options: .mappedIfSafe)
+                jsonResult = (try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary)! as! [String : [[String : [String : String]]]]
+            } catch {
+                print("read error")
+                return
+            }
+        }
+        
+        var newMap = [KeyMap]()
+        var i = 0
+        for (preview, results) in jsonResult {
+            if preview==index {
+                for result in results {
+                    for (x, keys) in result {
+                        for (k, g) in keys {
+                            newMap.append(KeyMap(id: Int(x)!, key: k, glyph: g))
+                        }
+                    }
+                }
+                self.keylist = newMap
+                self.objectWillChange.send()
+                self.saveAndApplyCurrent()
+            }
+            i = i + 1
+        }
+    }
+    
+    func list() -> [KeyMapName] {
+        
+        let data = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.hanken.quirky")!.appendingPathComponent("savedmappings.json")
+        var jsonResult = [String:[[String:[String:String]]]]()
+        if FileManager.default.fileExists(atPath: data.path) {
+            do {
+                let jsonData = try NSData(contentsOfFile: data.path, options: .mappedIfSafe)
+                jsonResult = (try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary)! as! [String : [[String : [String : String]]]]
+            } catch {
+                print("read error")
+                return [KeyMapName]()
+            }
+        }
+        var items = [KeyMapName]()
+        var index = 0
+        for (preview, _) in jsonResult {
+            items.append(KeyMapName(id: index, preview: preview))
+            index = index + 1
+        }
+        return items
+    }
+    
+    func saveAndApplyCurrent () {
         let data = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.hanken.quirky")!.appendingPathComponent("keymapping.json")
         var mappings = [[String:String]]()
         for keyMap in self.keylist {
@@ -152,29 +249,68 @@ func setup() -> Bool {
 
 struct ContentView: View {
     @State var showSheet = false
+    @State var showLoadList = false
     @State var currentKey = KeyMap(id:0, key:"A", glyph:"ᗩ")
     @ObservedObject var model = KeyListModel()
     var done = setup()
     
     var body: some View {
-        List(model.keylist, id: \.id) {k in
-            HStack {
-                Spacer()
-                Text(k.key)
-                .font(.system(size: 60))
-                Spacer()
-                Spacer()
-                Button(action: {
-                    currentKey = k
-                    showSheet = true
-                }) {
-                    Text(k.glyph)
-                        .font(.system(size: 60))
+        VStack {
+            List(model.keylist, id: \.id) {k in
+                HStack {
+                    Spacer()
+                    Text(k.key)
+                    .font(.system(size: 60))
+                    Spacer()
+                    Spacer()
+                    Button(action: {
+                        currentKey = k
+                        showSheet = true
+                    }) {
+                        Text(k.glyph)
+                            .font(.system(size: 60))
+                    }
+                    Spacer()
                 }
-                Spacer()
+            }.sheet(isPresented: $showSheet) {
+                DetailView(showSheet: self.$showSheet, key: $currentKey, callback: model.changeGlyph )
             }
-        }.sheet(isPresented: $showSheet) {
-            DetailView(showSheet: self.$showSheet, key: $currentKey, callback: model.changeGlyph )
+            HStack {
+                Button (action: {
+                    showLoadList = true
+                }) {
+                    Text("Load")
+                        .font(.system(size: 30))
+                }.padding()
+                    .sheet(isPresented: $showLoadList) {
+                        LoadListView(showLoadList: $showLoadList, model: self.model, callback: model.load)
+                    }
+                Spacer()
+                Button (action: {
+                    model.save()
+                }) {
+                    Text("Save")
+                        .font(.system(size: 30))
+                }.padding()
+            }
+        }
+    }
+}
+
+struct LoadListView: View {
+    @Binding var showLoadList: Bool
+    var model: KeyListModel
+    var callback: (String) -> Void
+    
+    var body: some View {
+        List(model.list()) { m in
+            Button(action: {
+                callback(m.preview)
+                showLoadList = false
+            }) {
+                Text(m.preview)
+                    .font(.system(size: 30))
+            }
         }
     }
 }

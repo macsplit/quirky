@@ -152,6 +152,7 @@ func setup() -> Bool {
 
 struct ContentView: View {
     @State var showSheet = false
+    @State var currentKey = KeyMap(id:0, key:"A", glyph:"ᗩ")
     @ObservedObject var model = KeyListModel()
     var done = setup()
     
@@ -164,22 +165,24 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 Button(action: {
+                    currentKey = k
                     showSheet = true
                 }) {
                     Text(k.glyph)
                         .font(.system(size: 60))
-                }.sheet(isPresented: $showSheet) {
-                    DetailView(showSheet: self.$showSheet, key: k, callback: model.changeGlyph )
                 }
                 Spacer()
             }
+        }.sheet(isPresented: $showSheet) {
+            DetailView(showSheet: self.$showSheet, key: $currentKey, callback: model.changeGlyph )
         }
     }
 }
 
 struct DetailView: View {
     @Binding var showSheet: Bool
-    @State var key: KeyMap
+    @Binding var key: KeyMap
+
     var callback: (String, String) -> Void
     
     var body: some View {
@@ -211,11 +214,5 @@ struct DetailView: View {
             }
                 .buttonStyle(PlainButtonStyle())
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

@@ -18,7 +18,7 @@ Quirky is an uppercase English keyboard extension for the iPhone with an accompa
 
 4. The keyboard can then be used
 
-<img src="https://github.com/macsplit/quirky/raw/main/Images/Photo%2024-10-2021%2C%2019%2058%2040.png" width="360">
+<img src="https://github.com/macsplit/quirky/raw/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202021-11-10%20at%2011.03.47.png" width="360">
 
 Tapping the globe key changes back to another keyboard layout
 

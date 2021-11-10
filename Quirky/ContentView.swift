@@ -260,7 +260,8 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Text(k.key)
-                    .font(.system(size: 60))
+                        .font(.system(size: 60))
+                        .foregroundColor(Color.primary)
                     Spacer()
                     Spacer()
                     Button(action: {
@@ -269,6 +270,7 @@ struct ContentView: View {
                     }) {
                         Text(k.glyph)
                             .font(.system(size: 60))
+                            .foregroundColor(Color.primary)
                     }
                     Spacer()
                 }
@@ -281,6 +283,7 @@ struct ContentView: View {
                 }) {
                     Text("Load")
                         .font(.system(size: 30))
+                        .foregroundColor(Color.primary)
                 }.padding()
                     .sheet(isPresented: $showLoadList) {
                         LoadListView(showLoadList: $showLoadList, model: self.model, callback: model.load)
@@ -291,6 +294,7 @@ struct ContentView: View {
                 }) {
                     Text("Save")
                         .font(.system(size: 30))
+                        .foregroundColor(Color.primary)
                 }.padding()
             }
         }
@@ -310,6 +314,7 @@ struct LoadListView: View {
             }) {
                 Text(m.preview)
                     .font(.system(size: 30))
+                    .foregroundColor(Color.primary)
             }
         }
     }

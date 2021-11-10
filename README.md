@@ -26,6 +26,6 @@ Tapping the globe key changes back to another keyboard layout
 
 Keyboard mappings can be saved, loaded, imported and exported.
 
-
+<img src="https://github.com/macsplit/quirky/raw/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202021-11-10%20at%2010.49.25%20marked%20up.png" width="360">
 
 

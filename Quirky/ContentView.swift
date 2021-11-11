@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 private let columns = 6
 
@@ -115,6 +116,18 @@ class KeyListModel: ObservableObject {
         keylist = loadMap()
     }
     
+    func export() -> KeyboardMappingFile {
+        var message = String()
+        let data = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.hanken.quirky")!.appendingPathComponent("keymapping.json")
+        do {
+            let jsonData = try NSData(contentsOfFile: data.path, options: .mappedIfSafe)
+            message = String(data: jsonData as Data, encoding: String.Encoding.utf8)!
+        } catch {
+            print("export read error")
+        }
+        return KeyboardMappingFile(message: message)
+    }
+    
     func changeGlyph(key: String, glyph: String) {
         let index = self.keylist.firstIndex(where: {$0.key == key})
         self.keylist[index!].glyph = glyph
@@ -212,6 +225,17 @@ class KeyListModel: ObservableObject {
         return items
     }
     
+    func saveDataAndReload(jsonData: NSData) {
+        let data = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.hanken.quirky")!.appendingPathComponent("keymapping.json")
+        do {
+            try jsonData.write(to: data)
+        } catch {
+            return
+        }
+        keylist = loadMap()
+        self.objectWillChange.send()
+    }
+    
     func saveAndApplyCurrent () {
         let data = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.hanken.quirky")!.appendingPathComponent("keymapping.json")
         var mappings = [[String:String]]()
@@ -247,9 +271,31 @@ func setup() -> Bool {
     return true
 }
 
+
+struct KeyboardMappingFile: FileDocument {
+    static var readableContentTypes: [UTType] { [.json] }
+    var message: String
+    init(message: String) {
+        self.message = message
+    }
+    init(configuration: ReadConfiguration) throws {
+        guard let data = configuration.file.regularFileContents,
+              let string = String(data: data, encoding: .utf8)
+        else {
+            throw CocoaError(.fileReadCorruptFile)
+        }
+        message = string
+    }
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        return FileWrapper(regularFileWithContents: message.data(using: .utf8)!)
+    }
+}
+
 struct ContentView: View {
     @State var showSheet = false
     @State var showLoadList = false
+    @State var isImporting = false
+    @State var showActivity = false
     @State var currentKey = KeyMap(id:0, key:"A", glyph:"ᗩ")
     @ObservedObject var model = KeyListModel()
     var done = setup()
@@ -281,8 +327,7 @@ struct ContentView: View {
                 Button (action: {
                     showLoadList = true
                 }) {
-                    Text("Load")
-                        .font(.system(size: 30))
+                    Image(systemName: "list.dash")
                         .foregroundColor(Color.primary)
                 }.padding()
                     .sheet(isPresented: $showLoadList) {
@@ -292,10 +337,54 @@ struct ContentView: View {
                 Button (action: {
                     model.save()
                 }) {
-                    Text("Save")
-                        .font(.system(size: 30))
+                    Image(systemName: "plus")
                         .foregroundColor(Color.primary)
                 }.padding()
+                Spacer()
+                Button (action: {
+                    isImporting = true
+                }) {
+                    Image(systemName: "square.and.arrow.down")
+                        .foregroundColor(Color.primary)
+                }.padding()
+                .fileImporter(
+                    isPresented: $isImporting,
+                    allowedContentTypes: [.json],
+                    allowsMultipleSelection: false
+                ) { result in
+                    do {
+                        let data: URL = try result.get().first!
+                        let lock = data.startAccessingSecurityScopedResource()
+                        if (lock) {
+                            let jsonData = try NSData(contentsOfFile: data.path, options: .mappedIfSafe)
+                            model.saveDataAndReload(jsonData: jsonData)
+                            data.stopAccessingSecurityScopedResource()
+                        }
+                    } catch {
+                        print("import error: \(error)")
+                    }
+                }
+                Spacer()
+                Button (action: {
+                    showActivity = true
+                    UIView.appearance().tintColor = UIColor.systemTeal
+                }) {
+                    Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(Color.primary)
+                }.padding()
+                .fileExporter(
+                    isPresented: $showActivity,
+                    document: model.export(),
+                    contentType: UTType.json,
+                    defaultFilename: "quirky.json",
+                    onCompletion: { result in
+                        if case .success = result {
+                            print("exported")
+                        } else {
+                            print("not exported")
+                        }
+                    }
+                )
             }
         }
     }
@@ -307,14 +396,21 @@ struct LoadListView: View {
     var callback: (String) -> Void
     
     var body: some View {
-        List(model.list()) { m in
-            Button(action: {
-                callback(m.preview)
-                showLoadList = false
-            }) {
-                Text(m.preview)
-                    .font(.system(size: 30))
-                    .foregroundColor(Color.primary)
+        if (model.list().isEmpty) {
+            Text("No saved keyboard mappings, use the + icon to save one.")
+                .font(.system(size: 20))
+                .italic()
+                .foregroundColor(Color.secondary)
+        } else {
+            List(model.list()) { m in
+                Button(action: {
+                    callback(m.preview)
+                    showLoadList = false
+                }) {
+                    Text(m.preview)
+                        .font(.system(size: 30))
+                        .foregroundColor(Color.primary)
+                }
             }
         }
     }

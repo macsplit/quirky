@@ -12,10 +12,9 @@
 		AD6006D82724AC0D0039FFCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6006D72724AC0D0039FFCA /* ContentView.swift */; };
 		AD6006E02724AC0F0039FFCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6006DE2724AC0F0039FFCA /* LaunchScreen.storyboard */; };
 		AD6006E52724B0AE0039FFCA /* keymapping.json in Resources */ = {isa = PBXBuildFile; fileRef = AD60069E2724885A0039FFCA /* keymapping.json */; };
+		AD8327ED273D27DC00E22C74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8327EC273D27DB00E22C74 /* Assets.xcassets */; };
 		AD997AE02725AFB400882B70 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADF8CD5527240B0E0054C917 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD997AE52725B86800882B70 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD997AE42725B86800882B70 /* Settings.bundle */; };
-		ADE44E9F272E20EA009CBAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE44E9E272E20EA009CBAF0 /* Assets.xcassets */; };
-		ADE44EA0272E20EA009CBAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE44E9E272E20EA009CBAF0 /* Assets.xcassets */; };
 		ADF8CD5827240B0E0054C917 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF8CD5727240B0E0054C917 /* KeyboardViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,10 +57,10 @@
 		AD6006D72724AC0D0039FFCA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AD6006DF2724AC0F0039FFCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD6006E12724AC0F0039FFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD8327EC273D27DB00E22C74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD997ADA2725AC8C00882B70 /* Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard.entitlements; sourceTree = "<group>"; };
 		AD997ADB2725ACAC00882B70 /* Quirky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Quirky.entitlements; sourceTree = "<group>"; };
 		AD997AE42725B86800882B70 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		ADE44E9E272E20EA009CBAF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADF8CD5527240B0E0054C917 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF8CD5727240B0E0054C917 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		ADF8CD5927240B0E0054C917 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,8 +87,8 @@
 		AD6006D22724AC0D0039FFCA /* Quirky */ = {
 			isa = PBXGroup;
 			children = (
+				AD8327EC273D27DB00E22C74 /* Assets.xcassets */,
 				AD997ADB2725ACAC00882B70 /* Quirky.entitlements */,
-				ADE44E9E272E20EA009CBAF0 /* Assets.xcassets */,
 				AD6006D32724AC0D0039FFCA /* AppDelegate.swift */,
 				AD60069E2724885A0039FFCA /* keymapping.json */,
 				AD6006D52724AC0D0039FFCA /* SceneDelegate.swift */,
@@ -220,7 +219,7 @@
 			files = (
 				AD997AE52725B86800882B70 /* Settings.bundle in Resources */,
 				AD6006E52724B0AE0039FFCA /* keymapping.json in Resources */,
-				ADE44EA0272E20EA009CBAF0 /* Assets.xcassets in Resources */,
+				AD8327ED273D27DC00E22C74 /* Assets.xcassets in Resources */,
 				AD6006E02724AC0F0039FFCA /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADE44E9F272E20EA009CBAF0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +286,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Quirky/Quirky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				ENABLE_PREVIEWS = YES;
@@ -298,7 +296,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.08;
+				MARKETING_VERSION = 1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -313,7 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Quirky/Quirky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				ENABLE_PREVIEWS = YES;
@@ -323,7 +321,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.08;
+				MARKETING_VERSION = 1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -452,7 +450,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -461,7 +459,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.08;
+				MARKETING_VERSION = 1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -475,7 +473,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -484,7 +482,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.08;
+				MARKETING_VERSION = 1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

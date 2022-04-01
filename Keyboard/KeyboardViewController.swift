@@ -3,6 +3,8 @@ import AVFoundation
 
 class KeyboardViewController: UIInputViewController {
     
+    var heightConstraint: NSLayoutConstraint!
+    
     var buttons : [[UIButton]]!
     
     var layout = [
@@ -144,6 +146,10 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
      
@@ -151,7 +157,7 @@ class KeyboardViewController: UIInputViewController {
         
         let viewWidth = self.view.frame.size.width
         let viewHeight = self.view.frame.size.height
-     
+        
         let height = viewHeight/CGFloat(self.buttons.count)
         let innerHeight = height * margin
         let marginHeight = height * (1-margin)/2
@@ -187,11 +193,7 @@ class KeyboardViewController: UIInputViewController {
             }
         }
     }
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-    }
+
     
     override func textWillChange(_ textInput: UITextInput?) {
         
@@ -200,5 +202,6 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
       
     }
+    
     
 }

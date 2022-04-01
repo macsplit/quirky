@@ -286,7 +286,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Quirky/Quirky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				ENABLE_PREVIEWS = YES;
@@ -296,7 +296,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -311,7 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Quirky/Quirky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				ENABLE_PREVIEWS = YES;
@@ -321,7 +321,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -450,7 +450,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -459,7 +459,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -473,7 +473,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -482,7 +482,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

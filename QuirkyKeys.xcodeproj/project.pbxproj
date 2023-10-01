@@ -3,17 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD141EA92AC867EE009633B7 /* KeyboardKit in Frameworks */ = {isa = PBXBuildFile; productRef = AD141EA82AC867EE009633B7 /* KeyboardKit */; };
 		AD6006D42724AC0D0039FFCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6006D32724AC0D0039FFCA /* AppDelegate.swift */; };
 		AD6006D62724AC0D0039FFCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6006D52724AC0D0039FFCA /* SceneDelegate.swift */; };
 		AD6006D82724AC0D0039FFCA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6006D72724AC0D0039FFCA /* ContentView.swift */; };
 		AD6006E02724AC0F0039FFCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6006DE2724AC0F0039FFCA /* LaunchScreen.storyboard */; };
 		AD6006E52724B0AE0039FFCA /* keymapping.json in Resources */ = {isa = PBXBuildFile; fileRef = AD60069E2724885A0039FFCA /* keymapping.json */; };
 		AD8327ED273D27DC00E22C74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8327EC273D27DB00E22C74 /* Assets.xcassets */; };
-		AD997AE02725AFB400882B70 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADF8CD5527240B0E0054C917 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD997AE02725AFB400882B70 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ADF8CD5527240B0E0054C917 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD997AE52725B86800882B70 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD997AE42725B86800882B70 /* Settings.bundle */; };
 		ADF8CD5827240B0E0054C917 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF8CD5727240B0E0054C917 /* KeyboardViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,15 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		AD997AE32725AFB400882B70 /* Embed App Extensions */ = {
+		AD997AE32725AFB400882B70 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AD997AE02725AFB400882B70 /* Keyboard.appex in Embed App Extensions */,
+				AD997AE02725AFB400882B70 /* Keyboard.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD141EA92AC867EE009633B7 /* KeyboardKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +148,7 @@
 				AD6006CD2724AC0D0039FFCA /* Sources */,
 				AD6006CE2724AC0D0039FFCA /* Frameworks */,
 				AD6006CF2724AC0D0039FFCA /* Resources */,
-				AD997AE32725AFB400882B70 /* Embed App Extensions */,
+				AD997AE32725AFB400882B70 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -172,6 +174,9 @@
 			dependencies = (
 			);
 			name = Keyboard;
+			packageProductDependencies = (
+				AD141EA82AC867EE009633B7 /* KeyboardKit */,
+			);
 			productName = Keyboard;
 			productReference = ADF8CD5527240B0E0054C917 /* Keyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -182,8 +187,9 @@
 		ADF8CD3727240A450054C917 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					AD6006D02724AC0D0039FFCA = {
 						CreatedOnToolsVersion = 12.5;
@@ -202,6 +208,9 @@
 				Base,
 			);
 			mainGroup = ADF8CD3627240A450054C917;
+			packageReferences = (
+				AD141EA52AC866C8009633B7 /* XCLocalSwiftPackageReference "../../Misc/KeyboardKit" */,
+			);
 			productRefGroup = ADF8CD4027240A450054C917 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,20 +294,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Quirky/Quirky.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Quirky/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_CFBundleDisplayName = Quirky;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -310,20 +323,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Quirky/Quirky.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Quirky/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_CFBundleDisplayName = Quirky;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -333,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -363,9 +381,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 14;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -380,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -394,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -424,9 +445,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 14;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -435,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -449,11 +472,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				INFOPLIST_FILE = Keyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,6 +486,7 @@
 				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,11 +497,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = PNJ9AX7795;
 				INFOPLIST_FILE = Keyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -485,6 +511,7 @@
 				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.hanken.QuirkyApp.Quirky.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -522,6 +549,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		AD141EA52AC866C8009633B7 /* XCLocalSwiftPackageReference "../../Misc/KeyboardKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Misc/KeyboardKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD141EA82AC867EE009633B7 /* KeyboardKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD141EA52AC866C8009633B7 /* XCLocalSwiftPackageReference "../../Misc/KeyboardKit" */;
+			productName = KeyboardKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADF8CD3727240A450054C917 /* Project object */;
 }

@@ -8,10 +8,28 @@
 import UIKit
 import SwiftUI
 
+func setup() -> Bool {
+    let version = UserDefaults.standard.value(forKey: "version_pref") as? String ?? "0"
+    
+    if (version == "0") {
+        
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
+        UserDefaults.standard.setValue( version, forKey: "version_pref")
+        
+        return false
+    }
+    
+    return true
+}
+
+func goToSettings() {
+    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+}
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -27,6 +45,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
+            
+            if (!setup()) {
+    
+                let alert = UIAlertController(title: "Enable keyboard",
+                  message: "The keyboard can be enabled in Keyboard Settings",
+                  preferredStyle: UIAlertController.Style.alert)
+                
+                let okAction = UIAlertAction(title: "I will",
+                style: UIAlertAction.Style.default) {
+                     UIAlertAction in
+                    goToSettings()
+                 }
+                
+                alert.addAction(okAction)
+                
+                window.rootViewController?.present(alert, animated: true, completion: nil)
+                
+
+            }
             
 
         }
@@ -58,6 +95,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
     }
 
 

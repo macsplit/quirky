@@ -8,6 +8,18 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+extension UIView {
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
+    }
+}
+
 private let columns = 6
 
 private let mainKeys = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
@@ -301,22 +313,6 @@ class KeyListModel: ObservableObject {
     }
 }
 
-func setup() -> Bool {
-    let version = UserDefaults.standard.value(forKey: "version_pref") as? String ?? "0"
-    
-    if (version == "0") {
-        
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
-        UserDefaults.standard.setValue( version, forKey: "version_pref")
-        
-        UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: {_ in
-        })
-    }
-    
-    return true
-}
-
-
 struct KeyboardMappingFile: FileDocument {
     static var readableContentTypes: [UTType] { [.json] }
     var message: String
@@ -343,7 +339,7 @@ struct ContentView: View {
     @State var showActivity = false
     @State var currentKey = KeyMap(id:0, key:"A", glyph:"ᗩ")
     @ObservedObject var model = KeyListModel()
-    var done = setup()
+    var done = false
     
     var body: some View {
         VStack {
@@ -434,6 +430,7 @@ struct ContentView: View {
             }
         }
     }
+
 }
 
 struct LoadListView: View {

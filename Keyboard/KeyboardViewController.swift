@@ -123,6 +123,21 @@ class QuirkyKeyboardStyleProvider: StandardKeyboardStyleProvider {
         var style = super.buttonStyle(for: action, isPressed: isPressed)
         style.backgroundColor = keyColor(colorIndex: colorIndex, bright: isPressed)
         
+        if (action == KeyboardAction.backspace) {
+            var size: CGFloat = 16
+            if (keyboardContext.isKeyboardFloating) {
+                size *= 0.5
+            }
+            style.font?.type = .custom("Helvetica", size: size)
+        } else if (action == KeyboardAction.nextKeyboard) {
+            var size: CGFloat = 20
+            if (keyboardContext.isKeyboardFloating) {
+                size *= 0.5
+            }
+            style.font?.type = .custom("Helvetica", size: size)
+        }
+        
+        
         if (isPressed) {
             style.font?.weight = .bold
         }
@@ -176,6 +191,9 @@ class QuirkyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
             scale = 0.5
         }
         
+        
+        let extrascale = (UIDevice.current.userInterfaceIdiom == .phone) ? 0.5 : 1
+        
         var itemRows = [KeyboardLayoutItem.Row]()
         keyLayout.forEach { row in
             var itemRow = KeyboardLayoutItem.Row()
@@ -184,9 +202,9 @@ class QuirkyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
                 if (char == " ") {
                     size = KeyboardLayoutItem.Size(width: .available, height: stdSize)
                 } else if (char == "🌐" || char == "⏎") {
-                    size = KeyboardLayoutItem.Size(width: .points(stdSize * 1.35 * scale), height: stdSize)
+                    size = KeyboardLayoutItem.Size(width: .points(stdSize * 1.5 * scale * extrascale), height: stdSize)
                 } else if (char == "⌫") {
-                    size = KeyboardLayoutItem.Size(width: .points(stdSize * 1.15 * scale), height: stdSize)
+                    size = KeyboardLayoutItem.Size(width: .points(stdSize * 1.4 * scale * extrascale), height: stdSize)
                 }else {
                     size = KeyboardLayoutItem.Size(width: .available, height: stdSize)
                 }

@@ -191,8 +191,20 @@ class QuirkyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
             scale = 0.5
         }
         
+        let Portrait = context.interfaceOrientation.isPortrait
+ 
+        let iPhone = (UIDevice.current.userInterfaceIdiom == .phone)
+
+        var extrascale = 1.0
         
-        let extrascale = (UIDevice.current.userInterfaceIdiom == .phone) ? 0.5 : 1
+        if (iPhone) {
+            if (Portrait) {
+                extrascale = 0.4
+            } else {
+                extrascale = 1.5
+            }
+        }
+        
         
         var itemRows = [KeyboardLayoutItem.Row]()
         keyLayout.forEach { row in
